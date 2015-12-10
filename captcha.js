@@ -25,6 +25,8 @@ var y = randomNumber(11);
         else 
         {var selectedOperator = Math.floor(Math.random() * operators.length);
     };
+
+    
     
 var getSign = operators[selectedOperator].sign;
 var z = operators[selectedOperator].method(x,y);
