@@ -2,18 +2,100 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Captcha</title>
-	<link rel="stylesheet" type="text/css" href="captcha.css">
-	 <!-- // <script type="text/javascript" src="captcha.js"></script> -->
-	 <script type="text/javascript" src="captcha.js"></script>
+	<title>GATA</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="gata.js"></script>
+	<link rel="stylesheet" type="text/css" href="gata.css">
 </head>
 <body>
-	<p id="plus">
-	<span id="firstNumber"></span>
-	<span id="sign"></span>
-	<span id="secondNumber"></span>
-	<span> = 
-	<input type="text" id="result" size="3"></span>
-	<input type="button" value="Submit" onclick="getResult()"> </p>
+<div class="container">
+	<div id="errorCaptcha">ERROR: Please enter a valid CAPTCHA value.</div>
+	<div id="mainCaptcha">
+ 	<div id="elementsList">
+		<span id="firstNumber"></span>
+		<span id="sign"></span>
+		<span id="secondNumber"></span>
+		<span id="equal">=</span>
+		<span id="thirdNumber"></span>
+		<input type="button" value="Submit" onclick="getResult()"> 
+	</div>
+	</div>
+
+
+<script type="text/javascript">
+
+var randomObject = randomNumber (3);
+
+var span1 = document.createElement("input");
+span1.setAttribute("size", "3");
+span1.setAttribute("id", "inputID");
+
+var numbersList = ["zero ", "one ", "two ", "three ", "four ", "five ", "six ", "seven ", "eight ", "nine ", "ten "];
+var numbersListX = [numbersList[x],x];
+var numbersListY = [numbersList[y],y];
+
+
+var span2 = document.createElement("span");
+span2.innerHTML = numbersListX[randomNumber(2)];
+
+var span3 = document.createElement("span");
+span3.innerHTML = numbersListY[randomNumber(2)];
+
+var span4 = document.createElement("span");
+if (z < 11) {span4.innerHTML = numbersList[z]}
+	else {span4.innerHTML = z};
+
+
+    
+var elements = [{
+		firstNumObject : span1,
+		signObject : getSign,
+		secondNumObject: span3,
+		thirdNumObject: span4
+	},
+	{	
+		firstNumObject : span2,
+		signObject : getSign,
+		secondNumObject: span1,
+		thirdNumObject: span4
+	},
+	{	
+		firstNumObject : span2,
+		signObject : getSign,
+		secondNumObject: span3,
+		thirdNumObject: span1
+	}];
+
+	document.getElementById("firstNumber").appendChild(elements[randomObject].firstNumObject);
+	document.getElementById("sign").innerHTML = (elements[randomObject].signObject);
+	document.getElementById("secondNumber").appendChild(elements[randomObject].secondNumObject);
+	document.getElementById("thirdNumber").appendChild(elements[randomObject].thirdNumObject);
+
+function getResult () {
+    var result = document.getElementById("inputID");
+    var w = result.value;
+    if (randomObject == 0) {
+    	if (w == x) {alert("corect");}
+    	 else if (w == "" || isNaN(w)) {document.getElementById("errorCaptcha").style.display = "initial";}
+    		else {alert("wrong");}};
+
+    if (randomObject == 1) {
+    	if (w == y) {alert("corect");}
+    	 else if (w == "" || isNaN(w)) {document.getElementById("errorCaptcha").style.display = "initial";}
+    		else {alert("wrong");}};   
+
+	if (randomObject == 2) {
+    	if (w == z) {alert("corect");}
+    	 else if (w == "" || isNaN(w)) {document.getElementById("errorCaptcha").style.display = 
+    	 	"initial";}
+    		else {alert("wrong");}
+    	};
+
+	 };
+</script>
+</div>
 </body>
 </html>
