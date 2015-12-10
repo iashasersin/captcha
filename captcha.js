@@ -29,6 +29,8 @@
 
     var i = x;
 
+    
+
 
     var first = document.getElementById("firstNumber");
     first.innerHTML = numbersList[i];
